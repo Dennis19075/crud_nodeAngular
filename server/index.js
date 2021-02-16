@@ -1,7 +1,7 @@
 const { json } = require('body-parser')
 const express =require('express')
 const app = express()
-
+const cors = require('cors')
 const morgan = require('morgan')
 const {mongoose} = require('./database')
 const routes = require('./routes/employee.routes')
@@ -11,6 +11,7 @@ app.set('PORT', process.env.PORT || 3000)
 
 //Middlewares
 app.use(morgan('dev'))
+app.use(cors({origin: 'http://localhost:4200'}))
 
 app.use(json())
 //Routes
